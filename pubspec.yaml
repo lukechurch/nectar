@@ -1,0 +1,7 @@
+name: nectar
+version: 0.0.1
+description: Data manipulation tools for Dart
+# dependencies:
+  # cli_util: any
+dev_dependencies:
+  test: '>=0.12.0 <0.13.0'

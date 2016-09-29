@@ -88,7 +88,9 @@ class KMedoids {
     double finalCost = cost;
 
     if (finalCost < startingCost) return true; // Improvement
-    if (finalCost - startingCost > 0.000001) throw "Things got worse!";
+    if (finalCost - startingCost > 0.000001) {
+      throw "Invariant check failed - clustering got worse. finalCost: $finalCost startingCost: $startingCost";
+    }
     return false; // No change, we're done here
   }
 

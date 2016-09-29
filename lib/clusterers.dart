@@ -63,7 +63,7 @@ class KMedoids {
           DataItem exchanged = _swap(c1, c2, d);
         	double afterSwap = cost;
 
-          if (afterSwap > beforeSwap) {
+          if (afterSwap.isNaN || afterSwap > beforeSwap) {
             // If the swap made things worse, undo
             _swap(c1, c2, exchanged);
           }
@@ -88,7 +88,9 @@ class KMedoids {
     double finalCost = cost;
 
     if (finalCost < startingCost) return true; // Improvement
-    if (finalCost - startingCost > 0.000001) throw "Things got worse!";
+    if (finalCost - startingCost > 0.000001) {
+      throw "Invariant check failed - clustering got worse. finalCost: $finalCost startingCost: $startingCost";
+    }
     return false; // No change, we're done here
   }
 

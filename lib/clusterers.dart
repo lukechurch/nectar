@@ -63,7 +63,7 @@ class KMedoids {
           DataItem exchanged = _swap(c1, c2, d);
         	double afterSwap = cost;
 
-          if (afterSwap > beforeSwap) {
+          if (afterSwap.isNaN || afterSwap > beforeSwap) {
             // If the swap made things worse, undo
             _swap(c1, c2, exchanged);
           }
